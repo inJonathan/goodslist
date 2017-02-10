@@ -51,6 +51,7 @@ var vmRight = new Vue({
     }
 });
 
+// Swiper配置
 var rigthType = document.getElementsByClassName('right-type');
 var swiperConfig = {
     left: {
