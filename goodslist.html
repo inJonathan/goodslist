@@ -9,28 +9,31 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.min.js"></script>
+    <script src="js/swiper.min.js"></script>
 </head>
 
 <body>
-    <div class="left">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
+    <div class="left" ref="left">
+        <div class="swiper-wrapper" ref="leftWrapper">
+            <div class="swiper-slide"  ref="leftSlide">
                 <ul>
-                    <li v-for="(item,index) in goods" v-text="item.typename" :class="{active: curIndex === index}" @click="selectType(index)"></li>
+                    <li v-for="(item,index) in goods" :class="{active: curIndex === index}" @click="selectType(index)" ref="leftItem">{{item.typename}}</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="right" ref="right">
-        <div class="swiper-wrapper" ref="wrapper">
+        <div class="swiper-wrapper" ref="rightWrapper">
             <div class="swiper-slide" ref="rightSlide">
                 <ul>
                     <li v-for="item in goods" ref="rightType" class="right-type">
-                        <h4 v-text="item.typename" class="typename"></h4>
+                        <h4 class="typename">{{item.typename}}</h4>
                         <ul>
                             <li v-for="(good,index) in item.good">
-                                <div v-text="good.name" class="good-name"></div>
+                                <div class="good-name">{{good.name}}</div>
                                 <span>￥{{good.price}}</span>
                             </li>
                         </ul>
@@ -41,9 +44,6 @@
         <div class="swiper-scrollbar"></div>
     </div>
 
-    <script src="js/vue.min.js"></script>
-    <script src="js/vue-resource.min.js"></script>
-    <script src="js/swiper.min.js"></script>
     <script src="js/goodslist.js"></script>
 </body>
 
