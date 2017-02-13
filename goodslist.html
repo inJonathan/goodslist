@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/vue.min.js"></script>
+    <script src="js/vue-tap.js"></script>
     <script src="js/vue-resource.min.js"></script>
     <script src="js/swiper.min.js"></script>
 </head>
@@ -17,9 +18,9 @@
 <body>
     <div class="left" ref="left">
         <div class="swiper-wrapper" ref="leftWrapper">
-            <div class="swiper-slide"  ref="leftSlide">
+            <div class="swiper-slide" ref="leftSlide">
                 <ul>
-                    <li v-for="(item,index) in goods" :class="{active: curIndex === index}" @click="selectType(index)" ref="leftItem">{{item.typename}}</li>
+                    <li v-for="(item,index) in goods" :class="{active: curIndex === index}" v-tap="{methods: selectType, index: index}" ref="leftItem">{{item.typename}}</li>
                 </ul>
             </div>
         </div>

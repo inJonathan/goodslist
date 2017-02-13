@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" href="css/mui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-tap.js"></script>
+    <script src="js/vue-resource.min.js"></script>
+</head>
+
+<body>
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">购物车</h1>
+    </header>
+    <div class="mui-content goodscart">
+        <div class="top-bar">
+            <h5>天天快餐店</h5>
+            <button type="button" class="mui-btn edit-btn" v-text="edit ? '完成':'编辑'" v-tap="{methods: editToggle}"></button>
+        </div>
+        <div class="mui-card">
+            <form class="mui-input-group">
+                <div v-for="(item,index) in goodscart" class="mui-input-row mui-left" :class="{'mui-checkbox': !edit}">
+                    <label>{{item.name}}</label>
+                    <input v-show="!edit" name="checkbox" type="checkbox">
+                    <div v-show="!edit" class="count">x {{item.count}}</div>
+                    <div class="price" :class="{'price-edit': edit}">￥{{item.price}}</div>
+                    <div class="mui-numbox" v-show="edit">
+                        <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+                        <input class="mui-input-numbox" type="number" value="0" v-model="item.count">
+                        <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="js/mui.min.js"></script>
+    <script src="js/goodscart.js"></script>
+</body>
+
+</html>

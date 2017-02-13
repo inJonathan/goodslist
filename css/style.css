@@ -103,3 +103,52 @@ li {
 .good-name {
     float: left;
 }
+
+/*---------------------购物车---------------------*/
+
+.goodscart {
+    height: 100%;
+}
+
+.price {
+    position: absolute;
+    top: 32px;
+    left: 60px;
+}
+
+.count {
+    position: absolute;
+    top: 32px;
+    right: 20px;
+}
+
+.price-edit {
+    left: 12px;
+}
+
+.top-bar {
+    position: relative;
+    height: 40px;
+}
+
+.top-bar h5 {
+    float: left;
+    font-size: 16px;
+    color: #666;
+    line-height: 36px;
+    margin-left: 20px;
+}
+
+.top-bar button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.mui-input-group .mui-input-row {
+    height: 60px;
+}
+
+.mui-input-row label {
+    padding-bottom: 30px !important;
+}

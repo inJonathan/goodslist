@@ -7,132 +7,160 @@
                 {
                     "name": "娃娃菜炖豆腐",
                     "price": 17
-                }, {
+                },
+                {
                     "name": "手撕包菜",
                     "price": 16
-                }, {
+                },
+                {
                     "name": "香酥黄金鱼",
                     "price": 11
                 }
             ]
-        }, {
+        },
+        {
             "typename": "爽口凉菜",
             "typeid": 1,
             "good": [
                 {
                     "name": "八宝酱菜",
                     "price": 4
-                }, {
+                },
+                {
                     "name": "拍黄瓜",
                     "price": 9
-                }, {
+                },
+                {
                     "name": "酸爽海带",
                     "price": 9
                 }
             ]
-        }, {
+        },
+        {
             "typename": "特色粥品",
             "typeid": 2,
             "good": [
                 {
                     "name": "红豆薏米粥",
                     "price": 8
-                }, {
+                },
+                {
                     "name": "皮蛋瘦肉粥",
                     "price": 8
-                }, {
+                },
+                {
                     "name": "南瓜粥",
                     "price": 8
-                }, {
+                },
+                {
                     "name": "红枣山药糙米粥",
                     "price": 10
-                }, {
+                },
+                {
                     "name": "鲜蔬菌菇粥",
                     "price": 10
                 }
             ]
-        }, {
+        },
+        {
             "typename": "果拼果汁",
             "typeid": 3,
             "good": [
                 {
                     "name": "蜜瓜圣女萝莉杯",
                     "price": 6
-                }, {
+                },
+                {
                     "name": "加多宝",
                     "price": 6
-                }, {
+                },
+                {
                     "name": "VC无限橙果汁",
                     "price": 8
                 }
             ]
-        }, {
+        },
+        {
             "typename": "小吃主食",
             "typeid": 4,
             "good": [
                 {
                     "name": "扁豆焖面",
                     "price": 14
-                }, {
+                },
+                {
                     "name": "葱花饼",
                     "price": 10
-                }, {
+                },
+                {
                     "name": "牛肉馅饼",
                     "price": 14
-                }, {
+                },
+                {
                     "name": "招牌猪肉白菜锅贴",
                     "price": 17
-                }, {
+                },
+                {
                     "name": "糊塌子",
                     "price": 10
                 }
             ]
-        }, {
+        },
+        {
             "typename": "美味糕点",
             "typeid": 5,
             "good": [
                 {
                     "name": "芒果千层糕",
                     "price": 8
-                }, {
+                },
+                {
                     "name": "榴莲千层糕",
                     "price": 8
-                }, {
+                },
+                {
                     "name": "栗子千层糕",
                     "price": 8
                 }
             ]
-        }, {
+        },
+        {
             "typename": "特色奶茶",
             "typeid": 6,
             "good": [
                 {
                     "name": "红豆奶茶",
                     "price": 6
-                }, {
+                },
+                {
                     "name": "椰果奶茶",
                     "price": 6
-                }, {
+                },
+                {
                     "name": "布丁奶茶",
                     "price": 6
-                }, {
+                },
+                {
                     "name": "牛奶巧克力奶茶",
                     "price": 6
                 }
             ]
-        }, {
+        },
+        {
             "typename": "风味烧烤",
             "typeid": 7,
             "good": [
                 {
                     "name": "羊肉串",
                     "price": 3
-                }, {
+                },
+                {
                     "name": "烤玉米",
                     "price": 5
                 }
             ]
-        }, {
+        },
+        {
             "typename": "美味面类",
             "typeid": 8,
             "good": [
@@ -157,7 +185,8 @@
                     "price": 15
                 }
             ]
-        }, {
+        },
+        {
             "typename": "美味粉类",
             "typeid": 9,
             "good": [
@@ -178,6 +207,33 @@
                     "price": 12
                 }
             ]
+        }
+    ],
+    "goodscart": [
+        {
+            "name": "牛腩河粉",
+            "price": 14,
+            "count": 1
+        },
+        {
+            "name": "红烧牛肉面",
+            "price": 15,
+            "count": 1
+        },
+        {
+            "name": "布丁奶茶",
+            "price": 6,
+            "count": 2
+        },
+        {
+            "name": "南瓜粥",
+            "price": 8,
+            "count": 2
+        },
+        {
+            "name": "香酥黄金鱼",
+            "price": 11,
+            "count": 1
         }
     ]
 }

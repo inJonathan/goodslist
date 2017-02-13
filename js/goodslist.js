@@ -24,11 +24,11 @@ var vmLeft = new Vue({
         });
     },
     methods: {
-        selectType(index) {
+        selectType(params) {
             selFlag = false;
-            this.curIndex = index;
+            this.curIndex = params.index;
             this.$nextTick(() => {
-                var selectLeft = vmRight.$refs.rightType[index].offsetTop;
+                var selectLeft = vmRight.$refs.rightType[params.index].offsetTop;
                 var rightBot = vmRight.$refs.rightSlide.clientHeight - vmRight.$refs.right.clientHeight;
                 if (selectLeft > rightBot) {
                     selectLeft = rightBot;
