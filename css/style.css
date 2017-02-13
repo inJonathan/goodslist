@@ -106,8 +106,12 @@ li {
 
 /*---------------------购物车---------------------*/
 
+.bd-goodscart {
+    background-color: #efeff4;
+}
+
 .goodscart {
-    height: 100%;
+    padding-bottom: 60px;
 }
 
 .price {
@@ -129,6 +133,7 @@ li {
 .top-bar {
     position: relative;
     height: 40px;
+    margin-top: 10px;
 }
 
 .top-bar h5 {
@@ -149,6 +154,68 @@ li {
     height: 60px;
 }
 
-.mui-input-row label {
+.check-box {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.check-box > i {
+    display: none;
+}
+
+.checked > i {
+    display: block;
+}
+
+.mui-input-row label.goods-name {
     padding-bottom: 30px !important;
+}
+
+.mui-checkbox input[type=checkbox]:before {
+    display: block;
+    margin-top: 14px;
+}
+
+.mui-input-row .mui-numbox {
+    margin-top: 14px;
+}
+
+.nav-bar {
+    height: 100%;
+}
+
+.nav-bar input[type=checkbox]:before {
+    margin-top: 8px;
+}
+
+.nav-bar .check-all {
+    float: left;
+    width: 90px;
+    height: 52px;
+    line-height: 52px;
+}
+
+.countPrice {
+    float: right;
+    margin-right: 15px;
+    height: 100%;
+    line-height: 52px;
+    text-align: center;
+}
+
+.countPrice span {
+    font-weight: bold;
+}
+
+.pay {
+    float: right;
+    width: 90px;
+    height: 100%;
+    line-height: 52px;
+    text-align: center;
+    border-left: 1px solid #e1e1e1;
+    color: #999;
+    background-color: #f1f1f1;
 }
