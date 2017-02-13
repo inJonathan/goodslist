@@ -216,6 +216,11 @@ li {
     line-height: 52px;
     text-align: center;
     border-left: 1px solid #e1e1e1;
+    color: #fff;
+    background-color: #dd524d;
+}
+
+.pay-unable {
     color: #999;
     background-color: #f1f1f1;
 }

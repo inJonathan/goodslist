@@ -24,6 +24,7 @@ new Vue({
             });
 
             this.$nextTick(() => {
+
             });
 
         });
@@ -45,14 +46,13 @@ new Vue({
         checkGood(params) { // 点击当前商品复选框，取反
             params.item.checked = !params.item.checked;
 
-            // for (let i = 0; i < this.goodscart.length; i++) {
-            //     if (this.goodscart[i].checked) { // 如果有一个没有选中，全选选项取消
-            //         this.isCheckAll = false;
-            //         return;
-            //     } else {
-            //         this.isCheckAll = true;
-            //     }
-            // }
+            for (let i = 0; i < this.goodscart.length; i++) {
+                if (!this.goodscart[i].checked) { // 如果有一个没有选中，全选选项取消
+                    this.isCheckAll = false;
+                    break;
+                }
+                this.isCheckAll = true;
+            }
 
         },
         checkAll() { // 点击全选
@@ -66,13 +66,30 @@ new Vue({
                     i.checked = false;
                 })
             }
+        },
+        goPay() {
+            if (this.totalPrice > 0) {
+                alert('请支付 ' + this.totalPrice + ' 元');
+            } else {
+                return
+            }
+        },
+        toZero() {
+            this.goodscart.forEach((i) => {
+                if (i.count < 1) {
+                    i.count = 1;
+                }
+            });
         }
     },
     computed: {
-        totalPrice() {
+        totalPrice() { // 监听总价，相关项有变化立即更新
             let total = 0;
+            let count = 0;
             this.goodscart.forEach((i) => {
-                total += i.count * i.price;
+                count = i.count;
+                if (!i.checked) count = 0; // 如果没有被选中则不计入总价
+                total += count * i.price;
             });
             return total;
         }
