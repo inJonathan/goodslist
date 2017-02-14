@@ -156,17 +156,25 @@ li {
 
 .check-box {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
+    width: 60px;
+    height: 100%;
+    
 }
 
-.check-box > i {
-    display: none;
+.check-box .check-icon {
+    width: 28px;
+    height: 28px;
+    left: 50%;
+    right: 50%;
+    margin-left: 14px;
+    margin-top: 14px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-size: cover;
 }
 
-.checked > i {
-    display: block;
+.check-box > .check-icon {
+    background-image: none;
 }
 
 .mui-input-row label.goods-name {
@@ -192,9 +200,29 @@ li {
 
 .nav-bar .check-all {
     float: left;
-    width: 64px;
+    width: 86px;
     height: 52px;
     line-height: 52px;
+}
+
+.check-all .check-icon {
+    float: left;
+    width: 28px;
+    height: 28px;
+    left: 50%;
+    right: 50%;
+    margin: 14px 5px 0 14px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    background-size: cover;
+}
+
+.check-all > .check-icon {
+    background-image: none;
+}
+
+.checked > .check-icon {
+    background-image: url(../image/check.png);
 }
 
 .count-price {
@@ -236,14 +264,3 @@ li {
     padding: 8px;
     margin: 15px 8px 0 8px;
 }
-
-
-/*.del-item {
-    float: left;
-    width: 64px;
-    margin-right: 15px;
-    height: 100%;
-    line-height: 52px;
-    text-align: center;
-    border-left: 1px solid #ccc;
-}*/

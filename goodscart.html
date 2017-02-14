@@ -10,25 +10,25 @@
     <link rel="stylesheet" href="css/mui.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/mui.min.js"></script>
-    <script src="js/vue.min.js"></script>
     <script src="js/hammer.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/vue.min.js"></script>
     <script src="js/vue-touch.min.js"></script>
-    <script src="js/vue-resource.min.js"></script>
-    <script src="https://use.fontawesome.com/81a7cb13e9.js"></script>
+    <script src="js/vue-axios.min.js"></script>
 </head>
 
 <body class="bd-goodscart">
     <div class="mui-content goodscart">
         <div class="top-bar">
             <h5>天天快餐店</h5>
-            <v-touch tag='button' @tap="editToggle" type="button" class="mui-btn edit-btn" v-text="edit ? '完成':'编辑'"></v-touch>
+            <v-touch tag='button' @tap="editToggle" type="button" class="mui-btn edit-btn" v-text="edit ? '完成':'编辑'"  v-if="totalPrice !== 0"></v-touch>
         </div>
         <div class="mui-card">
             <form class="mui-input-group">
                 <div v-for="(item,index) in goodscart" class="mui-input-row mui-left" :class="{'mui-checkbox': !edit}">
 
                     <!--复选框-->
-                    <div class="check-box" :class="{'checked': item.checked}" @tap="checkGood(item)" v-show="!edit"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                    <div class="check-box" :class="{'checked': item.checked}" @tap="checkGood(item)" v-show="!edit"><div class="check-icon"></div></div>
 
                     <label class="goods-name">{{item.name}}</label>
                     <div v-show="!edit" class="count">x {{item.count}}</div>
@@ -47,8 +47,8 @@
             <!--底部bar-->
             <nav class="mui-bar mui-bar-tab">
                 <div class="mui-input-row mui-checkbox mui-left nav-bar">
-                    <div class="check-all" @tap="checkAll"><i class="fa fa-check-circle" aria-hidden="true" v-show="isCheckAll && totalPrice > 0"></i>全选</div>
-                    <div class="pay" :class="{'pay-unable': totalPrice == 0}" @tap="goPay">结算</div>
+                    <div class="check-all" :class="{checked: isCheckAll}" @tap="checkAll"><div class="check-icon"></div>全选</div>
+                    <div class="pay" :class="{'pay-unable': totalPrice === 0}" @tap="goPay">结算</div>
                     <div class="count-price">合计 ￥<span>{{totalPrice}}</span></div>
                 </div>
             </nav>

@@ -14,9 +14,10 @@ new Vue({
         isCheckAll: true
     },
     created() {
-        this.$http.get('data.json').then(response => {
 
-            this.goodscart = response.body.goodscart;
+        this.axios.get('data.json').then(response => {
+
+            this.goodscart = response.data.goodscart;
 
             // 默认所有选项都选中
             this.goodscart.forEach((i) => {
@@ -24,12 +25,10 @@ new Vue({
             });
 
             this.$nextTick(() => {
-
-
-
             });
 
         });
+
     },
     methods: {
         editToggle() {
@@ -68,13 +67,6 @@ new Vue({
                 })
             }
         },
-        goPay() {
-            if (this.totalPrice > 0) {
-                alert('请支付 ' + this.totalPrice + ' 元');
-            } else {
-                return
-            }
-        },
         toZero() {
             this.goodscart.forEach((i) => {
                 if (i.count < 1) {
@@ -92,6 +84,19 @@ new Vue({
                     return
                 }
             })
+        },
+        goPay() {
+            let postArr = [];
+            if (this.totalPrice > 0) {
+                this.goodscart.forEach((i) => {
+                    if (i.checked) {
+                        postArr.push(i);
+                    }
+                });
+                alert('总价：' + this.totalPrice + '元\n提交信息：' + JSON.stringify(postArr));
+            } else {
+                return
+            }
         }
     },
     computed: {
@@ -107,4 +112,3 @@ new Vue({
         }
     }
 });
-
