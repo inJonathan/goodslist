@@ -1,6 +1,6 @@
 /*
  *      author: Jonathan
- *        date: 2017-02-13
+ *        date: 2017-02-14
  * description: 购物车
  *      E-mail: jonrcao@gmail.com
  */
@@ -25,6 +25,8 @@ new Vue({
 
             this.$nextTick(() => {
 
+
+
             });
 
         });
@@ -33,18 +35,18 @@ new Vue({
         editToggle() {
             this.edit = !this.edit;
         },
-        changeCount(params) {
-            if (params.way > 0) {
-                params.item.count++;
+        changeCount(item, way) {
+            if (way > 0) {
+                item.count++;
             } else {
-                params.item.count--;
-                if (params.item.count <= 1) {
-                    params.item.count = 1;
+                item.count--;
+                if (item.count <= 1) {
+                    item.count = 1;
                 }
             }
         },
-        checkGood(params) { // 点击当前商品复选框，取反
-            params.item.checked = !params.item.checked;
+        checkGood(item) { // 点击当前商品复选框，取反
+            item.checked = !item.checked;
 
             for (let i = 0; i < this.goodscart.length; i++) {
                 if (!this.goodscart[i].checked) { // 如果有一个没有选中，全选选项取消
@@ -53,7 +55,6 @@ new Vue({
                 }
                 this.isCheckAll = true;
             }
-
         },
         checkAll() { // 点击全选
             this.isCheckAll = !this.isCheckAll;
@@ -80,6 +81,17 @@ new Vue({
                     i.count = 1;
                 }
             });
+        },
+        delItem(item) {
+            let _this = this;
+            mui.confirm('确认删除 ' + item.name + ' x' + item.count + '？', '提示', ['否', '是'], function (e) {
+                if (e.index === 1) {
+                    let index = _this.goodscart.indexOf(item);
+                    _this.goodscart.splice(index, 1);
+                } else {
+                    return
+                }
+            })
         }
     },
     computed: {

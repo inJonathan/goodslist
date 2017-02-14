@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/mui.min.js"></script>
     <script src="js/vue.min.js"></script>
-    <script src="js/vue-tap.js"></script>
+    <script src="js/hammer.min.js"></script>
+    <script src="js/vue-touch.min.js"></script>
     <script src="js/vue-resource.min.js"></script>
     <script src="https://use.fontawesome.com/81a7cb13e9.js"></script>
 </head>
@@ -20,30 +21,35 @@
     <div class="mui-content goodscart">
         <div class="top-bar">
             <h5>天天快餐店</h5>
-            <button type="button" class="mui-btn edit-btn" v-text="edit ? '完成':'编辑'" v-tap="{methods: editToggle}"></button>
+            <v-touch tag='button' @tap="editToggle" type="button" class="mui-btn edit-btn" v-text="edit ? '完成':'编辑'"></v-touch>
         </div>
         <div class="mui-card">
             <form class="mui-input-group">
                 <div v-for="(item,index) in goodscart" class="mui-input-row mui-left" :class="{'mui-checkbox': !edit}">
 
-                    <div class="check-box" :class="{'checked': item.checked}" v-tap="{methods: checkGood, item: item}" v-show="!edit"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                    <!--复选框-->
+                    <div class="check-box" :class="{'checked': item.checked}" @tap="checkGood(item)" v-show="!edit"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
 
                     <label class="goods-name">{{item.name}}</label>
                     <div v-show="!edit" class="count">x {{item.count}}</div>
                     <div class="price" :class="{'price-edit': edit}">￥ {{item.price}}</div>
 
+                    <!--计数器-->
+                    <button type="button" class="del-item mui-btn mui-btn-danger mui-btn-outlined" @tap="delItem(item)" v-show="edit">删除</button>
                     <div class="mui-numbox" data-numbox-min='0' v-show="edit">
-                        <button class="mui-btn mui-btn-numbox-minus" type="button" v-tap="{methods: changeCount, item: item, way: -1}" :disabled="item.count <= 1">-</button>
+                        <button class="mui-btn mui-btn-numbox-minus" type="button" @tap="changeCount(item, -1)" :disabled="item.count <= 1">-</button>
                         <input class="mui-input-numbox" type="number" value="0" v-model="item.count" @blur="toZero">
-                        <button class="mui-btn mui-btn-numbox-plus" type="button" v-tap="{methods: changeCount, item: item, way: 1}">+</button>
+                        <button class="mui-btn mui-btn-numbox-plus" type="button" @tap="changeCount(item, 1)">+</button>
                     </div>
                 </div>
             </form>
+
+            <!--底部bar-->
             <nav class="mui-bar mui-bar-tab">
                 <div class="mui-input-row mui-checkbox mui-left nav-bar">
-                    <div class="check-all" v-tap="{methods: checkAll}"><i class="fa fa-check-circle" aria-hidden="true" v-show="isCheckAll"></i>全选</div>
-                    <div class="pay" :class="{'pay-unable': totalPrice == 0}" v-tap="{methods: goPay}" >结算</div>
-                    <div class="countPrice">合计 ￥<span>{{totalPrice}}</span></div>
+                    <div class="check-all" @tap="checkAll"><i class="fa fa-check-circle" aria-hidden="true" v-show="isCheckAll && totalPrice > 0"></i>全选</div>
+                    <div class="pay" :class="{'pay-unable': totalPrice == 0}" @tap="goPay">结算</div>
+                    <div class="count-price">合计 ￥<span>{{totalPrice}}</span></div>
                 </div>
             </nav>
         </div>
