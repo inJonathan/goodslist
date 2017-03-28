@@ -46,9 +46,10 @@ li {
     width: 23%;
     height: 100%;
     left: 0;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-.left li {
+.left li > div {
     padding: 30px 5px;
     padding-right: 7px;
     border-bottom: 1px solid #ccc;
@@ -58,11 +59,11 @@ li {
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
-.left li:last-child {
+.left li:last-child > div {
     border-bottom: none;
 }
 
-.left li.active {
+.left li.active > div {
     font-weight: bold;
     border-left-color: red;
     background-color: #efefef;

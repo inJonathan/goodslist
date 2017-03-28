@@ -24,9 +24,6 @@ new Vue({
                 this.$set(i, 'checked', true);
             });
 
-            this.$nextTick(() => {
-            });
-
         });
 
     },

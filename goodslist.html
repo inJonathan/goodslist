@@ -1,51 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>商品列表</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/vue.min.js"></script>
-    <script src="js/vue-tap.js"></script>
-    <script src="js/vue-resource.min.js"></script>
-    <script src="js/swiper.min.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>商品列表</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="css/swiper.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/hammer.min.js"></script>
+        <script src="js/axios.min.js"></script>
+        <script src="js/vue.min.js"></script>
+        <script src="js/vue-touch.min.js"></script>
+        <script src="js/vue-axios.min.js"></script>
+        <script src="js/swiper.min.js"></script>
+    </head>
 
-<body>
-    <div class="left" ref="left">
-        <div class="swiper-wrapper" ref="leftWrapper">
-            <div class="swiper-slide" ref="leftSlide">
-                <ul>
-                    <li v-for="(item,index) in goods" :class="{active: curIndex === index}" v-tap="{methods: selectType, index: index}" ref="leftItem">{{item.typename}}</li>
-                </ul>
+    <body>
+        <div class="left" ref="left">
+            <div class="swiper-wrapper" ref="leftWrapper">
+                <div class="swiper-slide" ref="leftSlide">
+                    <ul>
+                        <li ref="leftItem" v-for="(item,index) in goods" :class="{active: curIndex === index}">
+                            <v-touch tag="div" @tap="selectType(index)">{{item.typename}}</v-touch>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="right" ref="right">
-        <div class="swiper-wrapper" ref="rightWrapper">
-            <div class="swiper-slide" ref="rightSlide">
-                <ul>
-                    <li v-for="item in goods" ref="rightType" class="right-type">
-                        <h4 class="typename">{{item.typename}}</h4>
-                        <ul>
-                            <li v-for="(good,index) in item.good">
-                                <div class="good-name">{{good.name}}</div>
-                                <span>￥{{good.price}}</span>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+        <div class="right" ref="right">
+            <div class="swiper-wrapper" ref="rightWrapper">
+                <div class="swiper-slide" ref="rightSlide">
+                    <ul>
+                        <li v-for="item in goods" ref="rightType" class="right-type">
+                            <h4 class="typename">{{item.typename}}</h4>
+                            <ul>
+                                <li v-for="(good,index) in item.good">
+                                    <div class="good-name">{{good.name}}</div>
+                                    <span>￥{{good.price}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <div class="swiper-scrollbar"></div>
         </div>
-        <div class="swiper-scrollbar"></div>
-    </div>
 
-    <script src="js/goodslist.js"></script>
-</body>
+        <script src="js/goodslist.js"></script>
+    </body>
 
 </html>

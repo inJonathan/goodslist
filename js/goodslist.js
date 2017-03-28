@@ -13,30 +13,27 @@ var vmLeft = new Vue({
         curIndex: 0
     },
     created() {
-        this.$http.get('data.json').then(response => {
-
-            this.goods = response.body.goods;
-
+        this.axios.get('data.json').then(response => {
+            this.goods = response.data.goods;
             this.$nextTick(() => {
                 var left = new Swiper('.left', swiperConfig.left);
             });
-
         });
     },
     methods: {
-        selectType(params) {
+        selectType(index) {
             selFlag = false;
-            this.curIndex = params.index;
+            this.curIndex = index;
             this.$nextTick(() => {
-                var selectLeft = vmRight.$refs.rightType[params.index].offsetTop;
+                var selectLeft = vmRight.$refs.rightType[index].offsetTop;
                 var rightBot = vmRight.$refs.rightSlide.clientHeight - vmRight.$refs.right.clientHeight;
-                if (selectLeft > rightBot) {
+                if(selectLeft > rightBot) {
                     selectLeft = rightBot;
                 }
                 vmRight.$refs.rightWrapper.style.transitionDuration = "300ms";
                 vmRight.$refs.rightWrapper.style.transform = "translate3d(0px, -" + selectLeft + "px, 0px)";
 
-                setTimeout(function () {
+                setTimeout(function() {
                     selFlag = true;
                 }, 800);
             });
@@ -51,14 +48,13 @@ var vmRight = new Vue({
         goods: []
     },
     created() {
-        this.$http.get('data.json').then(response => {
+        this.axios.get('data.json').then(response => {
 
-            this.goods = response.body.goods;
+            this.goods = response.data.goods;
 
             this.$nextTick(() => {
                 var right = new Swiper('.right', swiperConfig.right);
             });
-
         });
     }
 });
@@ -81,12 +77,12 @@ var swiperConfig = {
         slidesPerView: 'auto',
         mousewheelControl: true,
         freeMode: true,
-        onTouchEnd: function (swiper) {
-            setTimeout(function () {
+        onTouchEnd: function(swiper) {
+            setTimeout(function() {
                 changeLeft(swiper);
             }, 300);
         },
-        onTransitionEnd: function (swiper) {
+        onTransitionEnd: function(swiper) {
             changeLeft(swiper);
         }
     }
@@ -99,13 +95,13 @@ function changeLeft(swiper) {
     var leftWrapper = vmLeft.$refs.leftWrapper;
     var transf = leftWrapper.style.transform;
     var scrollHeight = -parseInt(transf.split(',')[1]); // 获得滚动出去的距离
-    if (isNaN(scrollHeight)) {
+    if(isNaN(scrollHeight)) {
         scrollHeight = 0;
     }
 
-    if (selFlag) {
-        for (var i = 0; i < rigthType.length; i++) {
-            if ((-swiper.translate) > rigthType[i].offsetTop - rightInterval && (-swiper.translate) < rigthType[i].offsetTop - rightInterval + rigthType[i].offsetHeight) {
+    if(selFlag) {
+        for(var i = 0; i < rigthType.length; i++) {
+            if((-swiper.translate) > rigthType[i].offsetTop - rightInterval && (-swiper.translate) < rigthType[i].offsetTop - rightInterval + rigthType[i].offsetHeight) {
                 vmLeft.curIndex = i; // 改变左侧
                 var leftHeight = left.offsetHeight;
                 var leftItemHeight = leftItem[vmLeft.curIndex].offsetTop;
@@ -114,12 +110,12 @@ function changeLeft(swiper) {
 
                 var moveDown = leftItemHeight - leftHeight + leftItem[vmLeft.curIndex].clientHeight;
 
-                if (leftItemHeight > scrollHeight + leftHeight) {
+                if(leftItemHeight > scrollHeight + leftHeight) {
                     leftWrapper.style.transitionDuration = "300ms";
                     leftWrapper.style.transform = "translate3d(0px, -" + moveDown + "px, 0px)";
                 }
 
-                if (leftItemHeight < scrollHeight) {
+                if(leftItemHeight < scrollHeight) {
                     leftWrapper.style.transitionDuration = "300ms";
                     leftWrapper.style.transform = "translate3d(0px, -" + leftItemHeight + "px, 0px)";
                 }
